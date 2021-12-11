@@ -1,0 +1,95 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+This is an [R Markdown](http://rmarkdown.rstudio.com) Notebook. When you execute code within the notebook, the results appear beneath the code. 
+
+Try executing this chunk by clicking the *Run* button within the chunk or by placing your cursor inside it and pressing *Cmd+Shift+Enter*. 
+
+```{r}
+#Q1a
+
+Data_Frame <- data.frame (
+    id=c(1,2,3,4,5),
+    name=c("Peter", "Amy", "Ryan", "Gary", "Michelle"),
+    salary=c(623.30, 515.20, 611.00, 729.00, 843.25)
+)
+
+Data_Frame
+```
+
+```{r}
+#Q1b
+
+New_col_DF <- cbind(Data_Frame, department=c("IT","finance","computer science","economics","medicine"))
+
+New_col_DF
+```
+```{r}
+#Q1c- FIX 
+
+Data_Frame_New <- Data_Frame[-c(1), -c(3), -c(5)]
+
+Data_Frame_New
+```
+```{r}
+#Q1d
+
+x<-c("Peter", "Gary", "Michelle")
+
+y<-c(623.00, 729.00, 843.25)
+
+barplot(y, names.arg=x)
+```
+```{r}
+#Q1e
+
+x<-c(843.25,515.20,623.30)
+
+mylabel<-c("Highest", "Lowest", "Median")
+
+colors<-c("blue","yellow","green")
+
+pie(x, label=mylabel, main="Salaries", col=colors) 
+```
+```
+
+```{r}
+#Q2-transalation-if/else 
+
+my_function<-function(self, player, comp) {   
+        result = (player - comp) %% 3
+        if (result == 0) {
+            self.ties + 1
+            print("It's is a tie! ")
+        }else if (result == 1) {
+            self.wins + 1
+            print(self.player_name + ' wins!')  
+        }else if (result == 2) {
+            self.losses + 1
+            print("Computer wins the game!")
+        }
+}
+```
+
+```{r}
+#Q2-another example- translation-for/while and if/else
+
+my_function<-function(self)               
+        for (self in 1:4) {
+            } while True:
+                 playerchoice = input("Choose one option: 'rock', 'paper', or 'scissors'.\n"
+                               ).lower()
+                 if playerchoice not in self.choice.keys{
+                     print("Invalid choice, try again!")
+                } else {
+                    break
+                } 
+            }
+             comp_choice = self.rand_choice()
+             print(self.player_name + f" selected {playerchoice}, Computer selected {comp_choice}.")
+            }
+             self.who_wins(self.choice[playerchoice], self.choice[comp_choice])
+```
+
