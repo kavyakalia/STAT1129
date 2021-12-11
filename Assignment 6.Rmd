@@ -1,0 +1,109 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+This is an [R Markdown](http://rmarkdown.rstudio.com) Notebook. When you execute code within the notebook, the results appear beneath the code. 
+
+Try executing this chunk by clicking the *Run* button within the chunk or by placing your cursor inside it and pressing *Cmd+Shift+Enter*. 
+
+```{r}
+#Q1-creating the two matrices
+
+thismatrix<- matrix (c(7,2,9,4,12,13), nrow=2, ncol=3)
+
+thismatrix1<-matrix(c(1,2,3,7,8,9,12,13,14,19,20,21), nrow=3, ncol=4)
+
+thismatrix
+thismatrix1
+
+```
+
+```{r}
+#Q1-multiplying them 
+
+print(thismatrix %*% thismatrix1)
+```
+```{r}
+#Q2- Amazon data 
+
+#opening and reading the data 
+ff=read.csv('amazon_orders.csv')
+head(ff)
+
+
+```
+```{r}
+#shape of dataframe
+dim(ff)
+```
+```{r}
+# total spent on Amazon 
+
+data <- read.csv("amazon_orders.csv")
+
+data$Item.Total = as.numeric(gsub("\\$", "", data$Item.Total))
+
+print("Total spent on Amazon:" )
+
+print(sum(data$Item.Total))
+```
+
+```{r}
+# average amount spent 
+data$Item.Total = as.numeric(gsub("\\$", "", data$Item.Total))
+
+print("Average spent on an Amazon order:" )
+
+print(mean(data$Item.Total))
+```
+```{r}
+# median --> a lot smaller than the mean! 
+data$Item.Total = as.numeric(gsub("\\$", "", data$Item.Total))
+
+print("Median:" )
+
+print(median(data$Item.Total))
+```
+
+```{r}
+# maximum amount spent 
+data$Item.Total = as.numeric(gsub("\\$", "", data$Item.Total))
+
+print("Maximum spent on an Amazon order:" )
+
+print(max(data$Item.Total))
+```
+```{r}
+# minimum amount spent -->used a gift card, hence, free
+data$Item.Total = as.numeric(gsub("\\$", "", data$Item.Total))
+
+print("Minimum spent on an Amazon order:" )
+
+print(min(data$Item.Total))
+```
+```{r}
+#Total paid as tax
+data <- read.csv("amazon_orders.csv")
+
+data$Item.Subtotal.Tax = as.numeric(gsub("\\$", "", data$Item.Subtotal.Tax))
+
+print("Total spent on tax:" )
+
+print(sum(data$Item.Subtotal.Tax))
+
+```
+
+
+```{r}
+#changing order date to datetime, so I can plot
+#then, plotting the data by month 
+
+data <- read.csv("amazon_orders.csv")
+#head(ff)
+
+data$Order.Date = as.Date(data$Order.Date, "%m/ %d/ %Y")
+
+barplot(names.arg=Item.Total$data$Order.Date) 
+```
+
